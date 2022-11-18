@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<title>Rubic</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap cdn -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!-- Base Css  -->
+<link rel="stylesheet" href="rubic.css">
+<!-- font awesome cnd -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+  integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<body>
+  <!-- sidenav -->
+  <script src="rubic.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+  </script>
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <span class="fs-4"><i class="fa-solid fa-cube"> Rubic </i></span>
+      </div>
+      <ul class="list-unstyled components">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li>
+          <a href="#">Stock</a>
+        </li>
+        <li>
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  </div>
+
+  <div class="main">
+    <div class="top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <i class="fas fa-align-left"></i>
+          </button>
+
+        </div>
+      </nav>
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+      </nav>
+      <div class="search">
+        <input type="text" class="search__input form-control border-transparent" placeholder="Search..."
+          style="width:10vw">
+        <button type="button" class="btn btn-light" style="width:5px">Go</button>
+      </div>
+    </div>
+    <br>
+
+    <div class="body">
+      <!-- line graph -->
+      <div class="card1">
+        <div class="card1-body">
+          <h5 class="card1-title"><b>Sales Report</b></h5>
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Select Category
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Phone</a></li>
+              <li><a class="dropdown-item" href="#">Laptop</a></li>
+              <li><a class="dropdown-item" href="#">Computers</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="daterange">
+          <button class="btn btn-light dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Start Date
+          </button>
+          <input type="date" name="myDate">
+          <br>
+          <button class="btn btn-light dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            End Date
+          </button>
+          <input type="date" name="myDate">
+        </div>
+        <canvas id="myChart1" style="width:100%;height: 55%;"></canvas>
+        <script>
+          var yValues = [0, 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000];
+          var xValues = ['Mumbai', 'Mexico', 'Shanghai', 'New York', 'Tokyo', 'Berlin', 'Lisbon', 'Moscow'];
+          var zValues = [1450, 1650, 1750, 2150, 8900, 5800, 11869, 12000]
+
+
+          new Chart("myChart1", {
+            type: "line",
+            data: {
+              labels: xValues, yValues,
+              datasets: [{
+                label: 'Series 1',
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: zValues
+              }]
+            },
+          });
+        </script>
+
+      </div>
+
+      <!-- Pie chart -->
+      <div class="card2">
+        <div class="card2-body">
+          <h5 class="card2-title"><b>Weekly Top Seller</b></h5>
+        </div>
+        <canvas id="myChart2" style="width:100%;height: 70%;"></canvas>
+        <script>
+          var xValues = ["17-30 years old", "31-50 years old", ">= 50 years"];
+          var yValues = [62, 33, 10];
+          var barColors = [
+            "#b91d47",
+            "#00aba9",
+            "#2b5797",
+            "#e8c3b9",
+            "#1e7145"
+          ];
+
+          new Chart("myChart2", {
+            type: "pie",
+            data: {
+              labels: xValues,
+              datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: "Weather"
+              }
+            }
+          });
+        </script>
+
+      </div>
+
+      <!-- Pie chart -->
+      <div class="card3">
+        <div class="card3-body">
+          <h5 class="card3-title"><b>Weekly Top Seller</b></h5>
+        </div>
+        <canvas id="myChart3" style="width:100%;height: 70%;"></canvas>
+        <script>
+          var xValues = ["17-30 years old", "31-50 years old", ">= 50 years"];
+          var yValues = [72, 83, 77];
+          var barColors = [
+            "#b91d45",
+            "#00aba0",
+            "#2b5792"
+          ];
+
+          new Chart("myChart3", {
+            type: "polarArea",
+            data: {
+              labels: xValues,
+              datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: "Weather"
+              }
+            }
+          });
+        </script>
+
+      </div>
+
+
+    </div>
+    <div class="export">
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <h5><b>Weekly Top Products</b></h5>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex" role="">
+              <button class="btn btn-outline-success" type="submit">Export to PDF</button>
+              <button class="btn btn-outline-success" type="submit">Export to Excel</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+    <div class="table">
+      <table style="width:100%">
+        <tr>
+          <th>Images</th>
+          <th>Product Name</th>
+          <th>Stock</th>
+          <th>Status</th>
+          <th colspan="2">Action</th>
+        </tr>
+        <tr>
+          <td><i class="fa-solid fa-file-image"></i><i class="fa-solid fa-file-image"></i></td>
+          <td>Apple<br>Tablet & PC</td>
+          <td>123</td>
+          <td id="active">Active</td>
+          <td>Edit</td>
+          <td id="delete">Delete</td>
+        </tr>
+        <tr>
+          <td><i class="fa-solid fa-file-image"></i><i class="fa-solid fa-file-image"></i></td>
+          <td>Nike<br>Shoes</td>
+          <td>123</td>
+          <td id="active">Active</td>
+          <td>Edit</td>
+          <td id="delete">Delete</td>
+        </tr>
+        <tr>
+          <td><i class="fa-solid fa-file-image"></i><i class="fa-solid fa-file-image"></i></td>
+          <td>Intel<br>Processors</td>
+          <td>123</td>
+          <td id="active">Active</td>
+          <td>Edit</td>
+          <td id="delete">Delete</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <footer>
+    <nav aria-label="Page navigation example" >
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+
+</html>

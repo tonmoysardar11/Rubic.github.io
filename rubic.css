@@ -1,0 +1,129 @@
+*{
+    margin: 0;padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    width: 15%;
+    height: 100%;
+}
+#sidebar {
+    min-width: 15vw;
+    max-width: 15vw;
+    min-height: 100vh;
+    background: #00125b;
+    color: #fff;
+}
+
+
+#sidebar.active {
+    margin-left: -15vw;
+}
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #00125b;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #00125b;
+}
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #00125b;
+    background: #fff;
+}
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: rgb(0, 0, 0);
+    background: #ffffff;
+}
+ul ul a {
+    font-size: 0.9em ;
+    padding-left: 30px ;
+    background: #00125b;
+}
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    .main{
+        width: 95vw;
+    }
+    .breadcrumb{
+        opacity: 0;
+    }
+    .body{
+        display: block;
+    }
+
+
+}
+
+
+.main{
+    width: 84vw;
+    height: 100%;
+    margin-left: 16vw;
+    margin-top: -95vh;
+    margin-right: 2px;
+}
+.search{
+    display: flex;
+    float: right;
+    height: 30px;
+    margin-right: 2px;
+}
+.top{
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+.card1,.card2,.card3{
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+}
+.body{
+    display: grid;
+    grid-column-gap: 5px;
+    grid-template-columns: 40% 30% 30%;
+    margin-right: 20px;
+}
+#myChart2{
+    margin-top: 10%;
+}
+.d-flex{
+    margin-left: 798px;
+}
+.table{
+    margin-left: 10px;
+}
+
+
+#active{
+    color: green;
+}
+#delete{
+    color: red;
+}
+.edit{
+    display: inline;
+    justify-content: space-between;
+}
+
+footer{
+    margin-left: 16vw;
+}
